@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import echarts from 'echarts'
 export default {
     name: '',
     components: {
@@ -55,9 +54,10 @@ export default {
     watch: {},
     methods: {
         initData() {
-            var userList = echarts.init(document.getElementById('userList'))
+            console.log(this.$echarts)
+            /* const userList = this.$echarts.init(document.getElementById('userList'))
 
-            userList.setOption = this.data.option
+            userList.setOption = this.data.option*/
         }
     }
 }

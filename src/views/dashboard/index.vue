@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import userList from '@/echarts/userList'
+import userList from '@/echarts/userList.vue'
 import { mapGetters } from 'vuex'
 
 export default {
