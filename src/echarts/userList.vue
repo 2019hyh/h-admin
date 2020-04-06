@@ -1,5 +1,12 @@
 <template>
-  <div id="userList" />
+  <el-card>
+    <div slot="header" class="clearfix">
+      <span>{{ option.title.text }}</span>
+      <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+    </div>
+    <div id="userList" />
+  </el-card>
+
 </template>
 
 <script>
@@ -17,7 +24,7 @@ export default {
             option: {
                 title: {
                     text: '世界人口总量',
-                    subtext: '数据来自网络'
+                    show: false
                 },
                 tooltip: {
                     trigger: 'axis',
@@ -29,6 +36,8 @@ export default {
                     data: ['2011年', '2012年']
                 },
                 grid: {
+                    width: '100%',
+                    height: '80%',
                     left: '3%',
                     right: '4%',
                     bottom: '3%',
@@ -48,19 +57,33 @@ export default {
                     data: [18203, 23489, 29034, 104970, 131744, 630230]
                 }
                 ] }
+
         }
     },
     computed: {},
     watch: {},
+    mounted() {
+        this.initData('userList', this.option)
+    },
     methods: {
-        initData() {
+        initData(id, data) {
             console.log(this.$echarts)
-            /* const userList = this.$echarts.init(document.getElementById('userList'))
+            const userList = this.$echarts.init(document.getElementById(id))
 
-            userList.setOption = this.data.option*/
+            userList.setOption(data)
+
+            window.addEventListener('resize', function() {
+                userList.resize()
+            })
         }
     }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#userList{
+width:96%;
+    height:300px;
+}
+
+</style>

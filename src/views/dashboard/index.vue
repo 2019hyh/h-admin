@@ -1,43 +1,33 @@
 <template>
-  <div class="dashboard-container">
-    <el-row :gutter="20">
-      <el-col :span="12"><div class="grid-content bg-purple">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>卡片名称</span>
-            <el-button
-              style="float: right; padding: 3px 0"
-              type="text"
-            >操作按钮</el-button>
-          </div>
 
-        </el-card>
-      </div></el-col>
-      <el-col :span="12"><div class="grid-content bg-purple">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>卡片名称</span>
-            <el-button
-              style="float: right; padding: 3px 0"
-              type="text"
-            >操作按钮</el-button>
-          </div>
-          <userList />
-        </el-card></div></el-col>
+  <el-row class="row-bg" justify="space-around" align="middle">
 
-    </el-row>
+    <el-col :span="10" :md="10" :sm="22" :xs="22" :offset="1"><div class="grid-content bg-purple">
 
-  </div>
+      <userList />
+
+    </div>
+
+    </el-col>
+    <el-col :span="10" :md="10" :sm="22" :xs="22" :offset="1"><div class="grid-content bg-purple">
+
+      <Builder />
+
+    </div></el-col>
+  </el-row>
+
 </template>
 
 <script>
 import userList from '@/echarts/userList.vue'
+import Builder from '@/echarts/builder.vue'
 import { mapGetters } from 'vuex'
 
 export default {
     name: 'Dashboard',
     components: {
-        userList
+        userList,
+        Builder
     },
     computed: {
         ...mapGetters(['name'])
@@ -46,13 +36,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dashboard {
-  &-container {
-    margin: 30px;
+.el-row {
+  margin-top: 20px;
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
-  &-text {
-    font-size: 30px;
-    line-height: 46px;
-  }
-}
 </style>
